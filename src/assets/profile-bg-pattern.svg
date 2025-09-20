@@ -1,0 +1,25 @@
+<svg width="375" height="200" viewBox="0 0 375 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa2c19;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#fa6419;stop-opacity:0.05" />
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="#fa2c19" opacity="0.1"/>
+    </pattern>
+  </defs>
+  
+  <!-- 背景渐变 -->
+  <rect width="375" height="200" fill="url(#gradient1)"/>
+  
+  <!-- 装饰性圆点 -->
+  <rect width="375" height="200" fill="url(#dots)"/>
+  
+  <!-- 装饰性几何图形 -->
+  <circle cx="50" cy="50" r="30" fill="#fa2c19" opacity="0.05"/>
+  <circle cx="320" cy="150" r="40" fill="#fa6419" opacity="0.03"/>
+  <rect x="280" y="30" width="60" height="60" rx="10" fill="#fa2c19" opacity="0.04" transform="rotate(15 310 60)"/>
+  
+  <!-- 波浪装饰 -->
+  <path d="M0 120 Q93.75 100 187.5 120 T375 120 V200 H0 Z" fill="#fa2c19" opacity="0.02"/>
+</svg>

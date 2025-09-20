@@ -1,0 +1,250 @@
+/**
+ * 分类页面样式文件
+ * 实现侧边栏+内容区的经典布局
+ * 遵循BEM命名规范
+ */
+
+// 主题色变量
+$primary-color: #ff6b35;
+$text-color: #333333;
+$text-color-light: #666666;
+$border-color: #e5e5e5;
+$background-color: #f8f8f8;
+$sidebar-width: 200rpx;
+
+.category {
+  height: 100vh;
+  background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+
+  // 搜索栏样式
+  &__search {
+    padding: 20rpx;
+    background-color: #ffffff;
+    border-bottom: 1rpx solid $border-color;
+  }
+
+  // 内容区域
+  &__content {
+    flex: 1;
+    display: flex;
+    height: calc(100vh - 120rpx);
+  }
+
+  // 左侧分类导航
+  &__sidebar {
+    width: $sidebar-width;
+    background-color: #ffffff;
+    border-right: 1rpx solid $border-color;
+  }
+
+  &__sidebar-item {
+    padding: 30rpx 20rpx;
+    border-bottom: 1rpx solid $border-color;
+    text-align: center;
+    position: relative;
+    transition: all 0.2s ease;
+
+    &--active {
+      background-color: $background-color;
+      color: $primary-color;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6rpx;
+        height: 40rpx;
+        background-color: $primary-color;
+        border-radius: 3rpx 0 0 3rpx;
+      }
+    }
+
+    &:active {
+      background-color: $background-color;        
+    }
+  }
+
+  &__sidebar-text {
+    font-size: 28rpx;
+    line-height: 1.4;
+    word-break: break-all;
+  }
+
+  // 右侧内容区
+  &__main {
+    flex: 1;
+    background-color: #ffffff;
+  }
+
+  // 二级分类
+  &__sub-categories {
+    padding: 30rpx 20rpx;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30rpx;
+    border-bottom: 20rpx solid $background-color;
+  }
+
+  &__sub-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  &__sub-image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 12rpx;
+    margin-bottom: 10rpx;
+  }
+
+  &__sub-name {
+    font-size: 24rpx;
+    color: $text-color;
+    line-height: 1.2;
+  }
+
+  // 筛选条件
+  &__filters {
+    padding: 20rpx;
+    background-color: #ffffff;
+    border-bottom: 20rpx solid $background-color;       
+  }
+
+  &__filter-item {
+    display: flex;
+    gap: 20rpx;
+    margin-bottom: 20rpx;
+    flex-wrap: wrap;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // 商品列表
+  &__products {
+    padding: 20rpx;
+  }
+
+  &__product-item {
+    display: flex;
+    padding: 20rpx;
+    background-color: #ffffff;
+    border-radius: 12rpx;
+    margin-bottom: 20rpx;
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__product-image {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 8rpx;
+    margin-right: 20rpx;
+    flex-shrink: 0;
+  }
+
+  &__product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__product-name {
+    font-size: 30rpx;
+    color: $text-color; 
+    line-height: 1.4;
+    margin-bottom: 10rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__product-tags {
+    display: flex;
+    gap: 10rpx;
+    margin-bottom: 10rpx;
+    flex-wrap: wrap;
+  }
+
+  &__product-tag {
+    font-size: 20rpx;
+    color: $primary-color;
+    background-color: fade($primary-color, 10%);
+    padding: 4rpx 8rpx;
+    border-radius: 4rpx;
+    border: 1rpx solid fade($primary-color, 20%);
+  }
+
+  &__product-price {
+    display: flex;
+    align-items: center;
+    gap: 10rpx;
+    margin-bottom: 10rpx;
+
+    &--current {
+      font-size: 36rpx;
+      font-weight: bold;
+      color: $primary-color;
+    }
+
+    &--original {
+      font-size: 24rpx;
+      color: $text-color-light;
+      text-decoration: line-through;
+    }
+  }
+
+  &__product-sales {
+    &-text {
+      font-size: 24rpx;
+      color: $text-color-light;
+    }
+  }
+
+  // 加载更多
+  &__load-more {
+    padding: 40rpx 20rpx;
+    text-align: center;
+  }
+}
+
+// 响应式设计
+@media screen and (max-width: 375px) {
+  .category {
+    &__sidebar {
+      width: 160rpx;
+    }
+    
+    &__sub-categories {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20rpx;
+    }
+    
+    &__product-image {
+      width: 160rpx;
+      height: 160rpx;
+    }
+  }
+}

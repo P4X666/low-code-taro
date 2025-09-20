@@ -1,0 +1,311 @@
+/**
+ * 个人中心页面样式
+ * 包含用户信息、订单统计、功能菜单等样式定义
+ */
+
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.profile-page {
+  min-height: 100vh;
+  background-color: $bg-color-light;
+}
+
+// 用户信息头部
+.profile-header {
+  position: relative;
+  height: 320rpx;
+  overflow: hidden;
+
+  // 背景
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include gradient(135deg, $primary-color, $primary-light);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('../../assets/profile-bg-pattern.svg') no-repeat center;
+      background-size: cover;
+      opacity: 0.1;
+    }
+  }
+
+  // 内容区域
+  &__content {
+    position: relative;
+    z-index: 2;
+    padding: $spacing-xl $spacing-md $spacing-lg;
+    height: 100%;
+    @include flex(column, flex-end, stretch);
+  }
+
+  // 登录提示
+  &__login {
+    @include flex(row, flex-start, center);
+    padding: $spacing-md;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: $border-radius-lg;
+    backdrop-filter: blur(10px);
+    @include transition(background-color);
+
+    &:active {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  // 用户信息
+  &__user {
+    @include flex(row, flex-start, center);
+    padding: $spacing-md;
+  }
+
+  // 头像
+  &__avatar {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: $border-radius-round;
+    margin-right: $spacing-md;
+    border: 4rpx solid rgba(255, 255, 255, 0.3);
+  }
+
+  // 用户信息文字
+  &__info {
+    flex: 1;
+    @include flex(column, flex-start, flex-start);
+  }
+
+  &__name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-medium;
+    color: #ffffff;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__desc {
+    font-size: $font-size-sm;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  // 箭头图标
+  &__arrow {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  // VIP 标识
+  &__vip {
+    margin-left: $spacing-sm;
+    padding: $spacing-xs $spacing-sm;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    border-radius: $border-radius-sm;
+
+    &-text {
+      font-size: $font-size-xs;
+      font-weight: $font-weight-bold;
+      color: #333;
+    }
+  }
+}
+
+// 订单统计
+.order-stats {
+  background-color: $bg-color;
+  margin: $spacing-md;
+  border-radius: $border-radius-base;
+  overflow: hidden;
+  @include box-shadow($box-shadow-light);
+
+  // 全部订单入口
+  &__item {
+    @include flex-between();
+    padding: $spacing-md;
+    @include hairline($border-color, bottom);
+    @include transition(background-color);
+
+    &:active {
+      background-color: $bg-color-light;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-base;
+    color: $text-color;
+    font-weight: $font-weight-medium;
+  }
+
+  &__arrow {
+    color: $text-color-light;
+  }
+
+  // 订单状态列表
+  &__list {
+    @include flex(row, space-around, center);
+    padding: $spacing-lg $spacing-md;
+  }
+
+  &__stat {
+    @include flex(column, center, center);
+    @include transition(transform);
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__icon {
+    position: relative;
+    width: 80rpx;
+    height: 80rpx;
+    @include flex-center();
+    background-color: $bg-color-light;
+    border-radius: $border-radius-round;
+    margin-bottom: $spacing-sm;
+    color: $primary-color;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -8rpx;
+    right: -8rpx;
+    min-width: 32rpx;
+    height: 32rpx;
+    @include flex-center();
+    background-color: $error-color;
+    color: #ffffff;
+    font-size: $font-size-xs;
+    border-radius: $border-radius-round;
+    padding: 0 $spacing-xs;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    color: $text-color-secondary;
+  }
+}
+
+// 菜单区域
+.menu-section {
+  margin: $spacing-md;
+
+  &__title {
+    font-size: $font-size-base;
+    color: $text-color-secondary;
+    margin-bottom: $spacing-sm;
+    padding: 0 $spacing-xs;
+  }
+}
+
+.menu-list {
+  background-color: $bg-color;
+  border-radius: $border-radius-base;
+  overflow: hidden;
+  @include box-shadow($box-shadow-light);
+
+  .menu-item:not(:last-child) {
+    @include hairline($border-color, bottom);
+  }
+}
+
+.menu-item {
+  @include flex(row, flex-start, center);
+  padding: $spacing-md;
+  @include transition(background-color);
+
+  &:active {
+    background-color: $bg-color-light;
+  }
+
+  &__icon {
+    width: 72rpx;
+    height: 72rpx;
+    @include flex-center();
+    background-color: $bg-color-light;
+    border-radius: $border-radius-base;
+    margin-right: $spacing-md;
+    color: $primary-color;
+  }
+
+  &__title {
+    flex: 1;
+    font-size: $font-size-base;
+    color: $text-color;
+  }
+
+  &__extra {
+    margin-right: $spacing-sm;
+
+    &-text {
+      font-size: $font-size-sm;
+      color: $text-color-light;
+    }
+  }
+
+  &__arrow {
+    color: $text-color-light;
+  }
+
+  // 特殊样式
+  &--danger {
+    .menu-item__title {
+      color: $error-color;
+    }
+
+    .menu-item__icon {
+      color: $error-color;
+    }
+  }
+}
+
+// 版本信息
+.version-info {
+  text-align: center;
+  padding: $spacing-xl $spacing-md;
+  color: $text-color-light;
+  font-size: $font-size-sm;
+}
+
+// 响应式适配
+@media (max-width: $screen-sm) {
+  .profile-header {
+    height: 280rpx;
+
+    &__content {
+      padding: $spacing-lg $spacing-md $spacing-md;
+    }
+
+    &__avatar {
+      width: 100rpx;
+      height: 100rpx;
+    }
+
+    &__name {
+      font-size: $font-size-lg;
+    }
+  }
+
+  .order-stats {
+    &__icon {
+      width: 64rpx;
+      height: 64rpx;
+    }
+
+    &__label {
+      font-size: $font-size-xs;
+    }
+  }
+
+  .menu-item {
+    &__icon {
+      width: 60rpx;
+      height: 60rpx;
+    }
+  }
+}

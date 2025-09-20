@@ -1,0 +1,150 @@
+/**
+ * 全局样式变量定义
+ * 包含主题色彩、字体、间距、边框等设计规范
+ */
+
+// ==================== 主题色彩 ====================
+// 主色调
+$primary-color: #ff6b35;
+$primary-light: #ff8a5c;
+$primary-dark: #e55a2b;
+
+// 辅助色
+$secondary-color: #4a90e2;
+$success-color: #52c41a;
+$warning-color: #faad14;
+$error-color: #f5222d;
+$info-color: #1890ff;
+
+// 中性色
+$text-color: #333333;
+$text-color-secondary: #666666;
+$text-color-light: #999999;
+$text-color-disabled: #cccccc;
+
+// 背景色
+$bg-color: #ffffff;
+$bg-color-light: #f8f8f8;
+$bg-color-gray: #f5f5f5;
+$bg-color-dark: #eeeeee;
+
+// 边框色
+$border-color: #e8e8e8;
+$border-color-light: #f0f0f0;
+$border-color-dark: #d9d9d9;
+
+// ==================== 字体规范 ====================
+// 字体大小
+$font-size-xs: 20rpx;    // 10px
+$font-size-sm: 24rpx;    // 12px
+$font-size-base: 28rpx;  // 14px
+$font-size-lg: 32rpx;    // 16px
+$font-size-xl: 36rpx;    // 18px
+$font-size-xxl: 40rpx;   // 20px
+$font-size-xxxl: 48rpx;  // 24px
+
+// 字体粗细
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
+
+// 行高
+$line-height-base: 1.5;
+$line-height-sm: 1.2;
+$line-height-lg: 1.8;
+
+// ==================== 间距规范 ====================
+// 基础间距单位
+$spacing-xs: 8rpx;    // 4px
+$spacing-sm: 16rpx;   // 8px
+$spacing-base: 24rpx; // 12px
+$spacing-md: 32rpx;   // 16px
+$spacing-lg: 48rpx;   // 24px
+$spacing-xl: 64rpx;   // 32px
+$spacing-xxl: 96rpx;  // 48px
+
+// 页面边距
+$page-padding: $spacing-md;
+$page-margin: $spacing-lg;
+
+// ==================== 边框规范 ====================
+// 边框宽度
+$border-width-base: 1rpx;
+$border-width-thick: 2rpx;
+
+// 边框圆角
+$border-radius-xs: 4rpx;   // 2px
+$border-radius-sm: 8rpx;   // 4px
+$border-radius-base: 12rpx; // 6px
+$border-radius-lg: 16rpx;  // 8px
+$border-radius-xl: 24rpx;  // 12px
+$border-radius-round: 50%;
+
+// ==================== 阴影规范 ====================
+$box-shadow-light: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+$box-shadow-base: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+$box-shadow-dark: 0 6rpx 16rpx rgba(0, 0, 0, 0.15);
+
+// ==================== 层级规范 ====================
+$z-index-base: 1;
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-toast: 1080;
+
+// ==================== 动画规范 ====================
+$animation-duration-slow: 0.3s;
+$animation-duration-base: 0.2s;
+$animation-duration-fast: 0.1s;
+
+$ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 0.7);
+$ease-base-in: cubic-bezier(0.9, 0, 0.3, 0.7);
+$ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+$ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+// ==================== 组件尺寸 ====================
+// 按钮高度
+$btn-height-sm: 56rpx;   // 28px
+$btn-height-base: 72rpx; // 36px
+$btn-height-lg: 88rpx;   // 44px
+
+// 输入框高度
+$input-height-sm: 56rpx;   // 28px
+$input-height-base: 72rpx; // 36px
+$input-height-lg: 88rpx;   // 44px
+
+// 导航栏高度
+$navbar-height: 88rpx; // 44px
+$tabbar-height: 100rpx; // 50px
+
+// ==================== 响应式断点 ====================
+$screen-xs: 480rpx;  // 240px
+$screen-sm: 576rpx;  // 288px
+$screen-md: 768rpx;  // 384px
+$screen-lg: 992rpx;  // 496px
+$screen-xl: 1200rpx; // 600px
+
+// ==================== 电商特定变量 ====================
+// 价格颜色
+$price-color: $error-color;
+$price-color-original: $text-color-light;
+
+// 标签颜色
+$tag-color-hot: $error-color;
+$tag-color-new: $success-color;
+$tag-color-sale: $warning-color;
+
+// 评分颜色
+$rating-color: #ffa940;
+$rating-color-gray: #d9d9d9;
+
+// 库存状态
+$stock-color-normal: $success-color;
+$stock-color-low: $warning-color;
+$stock-color-out: $error-color;

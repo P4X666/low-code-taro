@@ -1,0 +1,162 @@
+/**
+ * 首页样式文件
+ * 遵循BEM命名规范：block__element--modifier
+ * 使用Less预处理器，支持嵌套和变量
+ */
+
+// 主题色变量
+$primary-color: #ff6b35;
+$text-color: #333333;
+$text-color-light: #666666;
+$border-color: #e5e5e5;
+$background-color: #f8f8f8;
+
+.home {
+  background-color: $background-color;
+  min-height: 100vh;
+
+  // 搜索栏样式
+  &__search {
+    padding: 20rpx;
+    background-color: #ffffff;
+    margin-bottom: 20rpx;
+  }
+
+  // 轮播图样式
+  &__banner {
+    margin-bottom: 20rpx;
+
+    &-image {
+      width: 100%;
+      height: 200px;
+      border-radius: 12rpx;
+    }
+  }
+
+  // 分类导航样式
+  &__categories {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 30rpx 20rpx;
+    margin-bottom: 20rpx;
+    border-radius: 12rpx;
+    margin: 0 20rpx 20rpx;
+  }
+
+  &__category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120rpx;
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  &__category-icon {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    margin-bottom: 10rpx;
+  }
+
+  &__category-name {
+    font-size: 24rpx;
+    color: $text-color;
+    text-align: center;
+  }
+
+  // 商品区域样式
+  &__products {
+    padding: 0 20rpx;
+  }
+
+  &__section-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: $text-color;
+    margin-bottom: 20rpx;
+    padding-left: 10rpx;
+    border-left: 4rpx solid $primary-color;
+  }
+
+  &__product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20rpx;
+  }
+
+  &__product-item {
+    background-color: #ffffff;
+    border-radius: 12rpx;
+    overflow: hidden;
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &__product-image {
+    width: 100%;
+    height: 300rpx;
+    object-fit: cover;
+  }
+
+  &__product-info {
+    padding: 20rpx;
+  }
+
+  &__product-name {
+    font-size: 28rpx;
+    color: $text-color;
+    line-height: 1.4;
+    margin-bottom: 10rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__product-price {
+    display: flex;
+    align-items: center;
+    gap: 10rpx;
+
+    &--current {
+      font-size: 32rpx;
+      font-weight: bold;
+      color: $primary-color;
+    }
+
+    &--original {
+      font-size: 24rpx;
+      color: $text-color-light;
+      text-decoration: line-through;
+    }
+  }
+}
+
+// 响应式设计 - 针对不同屏幕尺寸优化
+@media screen and (max-width: 375px) {
+  .home {
+    &__product-grid {
+      gap: 15rpx;
+    }
+    
+    &__category-icon {
+      width: 50rpx;
+      height: 50rpx;
+    }
+    
+    &__category-name {
+      font-size: 22rpx;
+    }
+  }
+}

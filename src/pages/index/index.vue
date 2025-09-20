@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import './index.less'
+import './index.scss'
 import Counter from '../../components/Counter.vue'
 
 export default {

@@ -1,0 +1,185 @@
+// ==================== 全局样式入口文件 ====================
+// 导入样式文件
+// 变量定义
+@import './variables.scss';
+// 混入函数
+@import './mixins.scss';
+
+// 基础样式
+@import './base.scss';
+
+// 组件样式（可选）
+// @import './components.scss';
+
+// 页面样式（可选）
+// @import './pages.scss';
+
+// ==================== NutUI 组件样式覆盖 ====================
+// 覆盖 NutUI 默认样式，适配项目设计规范
+
+// 按钮组件
+.nut-button {
+  border-radius: $border-radius-base !important;
+  
+  &--primary {
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
+  }
+}
+
+// 标签栏组件
+.nut-tabbar {
+  background-color: $bg-color !important;
+  border-top: $border-width-base solid $border-color !important;
+  
+  &-item {
+    &__text {
+      font-size: $font-size-xs !important;
+    }
+    
+    &--active {
+      .nut-tabbar-item__text {
+        color: $primary-color !important;
+      }
+    }
+  }
+}
+
+// 导航栏组件
+.nut-navbar {
+  background-color: $bg-color !important;
+  border-bottom: $border-width-base solid $border-color !important;
+  
+  &__title {
+    font-size: $font-size-lg !important;
+    font-weight: $font-weight-medium !important;
+  }
+}
+
+// Taro 内置组件样式优化
+.taro-swiper {
+  .swiper-pagination-bullet {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    
+    &-active {
+      background-color: $primary-color !important;
+    }
+  }
+}
+
+/**
+ * 工具类扩展
+ * 补充一些特殊的工具类
+ */
+
+// 安全区域适配
+.safe-area-top {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+// ==================== 自定义工具类 ====================
+// 渐变背景
+.gradient-primary {
+  background-color: $primary-color !important;
+}
+
+// ==================== 动画类 ====================
+// 通用动画类
+.fade-in {
+  animation: fadeIn $animation-duration-base $ease-out;
+}
+
+.fade-out {
+  animation: fadeOut $animation-duration-base $ease-out;
+}
+
+.slide-up {
+  animation: slideUp $animation-duration-base $ease-out;
+}
+
+.slide-down {
+  animation: slideDown $animation-duration-base $ease-out;
+}
+
+// 动画关键帧
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/**
+ * 响应式工具类
+ */
+@media (max-width: $screen-sm) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-md) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+
+@media (min-width: $screen-md) and (max-width: $screen-lg) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
+/**
+ * 打印样式
+ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .page {
+    background: white !important;
+  }
+}

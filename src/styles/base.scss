@@ -1,0 +1,394 @@
+/**
+ * 基础样式文件
+ * 包含全局重置样式、通用样式类和基础组件样式
+ */
+
+@import './variables.scss';
+@import './mixins.scss';
+
+// ==================== 全局重置样式 ====================
+// * {
+//   box-sizing: border-box;
+//   -webkit-tap-highlight-color: transparent;
+// }
+
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color;
+  background-color: $bg-color-light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 重置默认样式
+view, text, image, button, input, textarea, picker, scroll-view, swiper, swiper-item {
+  box-sizing: border-box;
+}
+
+// 图片默认样式
+image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+// 按钮重置
+button {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  color: inherit;
+  
+  &::after {
+    border: none;
+  }
+}
+
+// 输入框重置
+input, textarea {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: inherit;
+  color: inherit;
+}
+
+// ==================== 通用布局类 ====================
+// Flex 布局
+.flex {
+  @include flex();
+}
+
+.flex-column {
+  @include flex(column);
+}
+
+.flex-center {
+  @include flex-center();
+}
+
+.flex-center-x {
+  @include flex-center-x();
+}
+
+.flex-center-y {
+  @include flex-center-y();
+}
+
+.flex-between {
+  @include flex-between();
+}
+
+.flex-around {
+  @include flex-around();
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+// 对齐方式
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// ==================== 间距类 ====================
+// 外边距
+.m-0 { margin: 0; }
+.m-xs { margin: $spacing-xs; }
+.m-sm { margin: $spacing-sm; }
+.m-base { margin: $spacing-base; }
+.m-md { margin: $spacing-md; }
+.m-lg { margin: $spacing-lg; }
+.m-xl { margin: $spacing-xl; }
+
+// 水平外边距
+.mx-0 { margin-left: 0; margin-right: 0; }
+.mx-xs { margin-left: $spacing-xs; margin-right: $spacing-xs; }
+.mx-sm { margin-left: $spacing-sm; margin-right: $spacing-sm; }
+.mx-base { margin-left: $spacing-base; margin-right: $spacing-base; }
+.mx-md { margin-left: $spacing-md; margin-right: $spacing-md; }
+.mx-lg { margin-left: $spacing-lg; margin-right: $spacing-lg; }
+
+// 垂直外边距
+.my-0 { margin-top: 0; margin-bottom: 0; }
+.my-xs { margin-top: $spacing-xs; margin-bottom: $spacing-xs; }
+.my-sm { margin-top: $spacing-sm; margin-bottom: $spacing-sm; }
+.my-base { margin-top: $spacing-base; margin-bottom: $spacing-base; }
+.my-md { margin-top: $spacing-md; margin-bottom: $spacing-md; }
+.my-lg { margin-top: $spacing-lg; margin-bottom: $spacing-lg; }
+
+// 单边外边距
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: $spacing-xs; }
+.mt-sm { margin-top: $spacing-sm; }
+.mt-base { margin-top: $spacing-base; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: $spacing-xs; }
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-base { margin-bottom: $spacing-base; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+
+.ml-0 { margin-left: 0; }
+.ml-xs { margin-left: $spacing-xs; }
+.ml-sm { margin-left: $spacing-sm; }
+.ml-base { margin-left: $spacing-base; }
+.ml-md { margin-left: $spacing-md; }
+.ml-lg { margin-left: $spacing-lg; }
+
+.mr-0 { margin-right: 0; }
+.mr-xs { margin-right: $spacing-xs; }
+.mr-sm { margin-right: $spacing-sm; }
+.mr-base { margin-right: $spacing-base; }
+.mr-md { margin-right: $spacing-md; }
+.mr-lg { margin-right: $spacing-lg; }
+
+// 内边距
+.p-0 { padding: 0; }
+.p-xs { padding: $spacing-xs; }
+.p-sm { padding: $spacing-sm; }
+.p-base { padding: $spacing-base; }
+.p-md { padding: $spacing-md; }
+.p-lg { padding: $spacing-lg; }
+.p-xl { padding: $spacing-xl; }
+
+// 水平内边距
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-xs { padding-left: $spacing-xs; padding-right: $spacing-xs; }
+.px-sm { padding-left: $spacing-sm; padding-right: $spacing-sm; }
+.px-base { padding-left: $spacing-base; padding-right: $spacing-base; }
+.px-md { padding-left: $spacing-md; padding-right: $spacing-md; }
+.px-lg { padding-left: $spacing-lg; padding-right: $spacing-lg; }
+
+// 垂直内边距
+.py-0 { padding-top: 0; padding-bottom: 0; }
+.py-xs { padding-top: $spacing-xs; padding-bottom: $spacing-xs; }
+.py-sm { padding-top: $spacing-sm; padding-bottom: $spacing-sm; }
+.py-base { padding-top: $spacing-base; padding-bottom: $spacing-base; }
+.py-md { padding-top: $spacing-md; padding-bottom: $spacing-md; }
+.py-lg { padding-top: $spacing-lg; padding-bottom: $spacing-lg; }
+
+// ==================== 文字类 ====================
+// 字体大小
+.text-xs { font-size: $font-size-xs; }
+.text-sm { font-size: $font-size-sm; }
+.text-base { font-size: $font-size-base; }
+.text-lg { font-size: $font-size-lg; }
+.text-xl { font-size: $font-size-xl; }
+.text-xxl { font-size: $font-size-xxl; }
+.text-xxxl { font-size: $font-size-xxxl; }
+
+// 字体粗细
+.font-light { font-weight: $font-weight-light; }
+.font-normal { font-weight: $font-weight-normal; }
+.font-medium { font-weight: $font-weight-medium; }
+.font-bold { font-weight: $font-weight-bold; }
+
+// 文字颜色
+.text-primary { color: $primary-color; }
+.text-secondary { color: $text-color-secondary; }
+.text-light { color: $text-color-light; }
+.text-disabled { color: $text-color-disabled; }
+.text-success { color: $success-color; }
+.text-warning { color: $warning-color; }
+.text-error { color: $error-color; }
+.text-info { color: $info-color; }
+
+// 文字省略
+.text-ellipsis {
+  @include text-ellipsis();
+}
+
+.text-ellipsis-2 {
+  @include text-ellipsis-multi(2);
+}
+
+.text-ellipsis-3 {
+  @include text-ellipsis-multi(3);
+}
+
+// ==================== 背景类 ====================
+.bg-white { background-color: $bg-color; }
+.bg-light { background-color: $bg-color-light; }
+.bg-gray { background-color: $bg-color-gray; }
+.bg-dark { background-color: $bg-color-dark; }
+.bg-primary { background-color: $primary-color; }
+.bg-secondary { background-color: $secondary-color; }
+.bg-success { background-color: $success-color; }
+.bg-warning { background-color: $warning-color; }
+.bg-error { background-color: $error-color; }
+
+// ==================== 边框类 ====================
+.border { @include border(); }
+.border-top { @include border-side(top); }
+.border-right { @include border-side(right); }
+.border-bottom { @include border-side(bottom); }
+.border-left { @include border-side(left); }
+
+.border-light { @include border($border-width-base, solid, $border-color-light); }
+.border-dark { @include border($border-width-base, solid, $border-color-dark); }
+
+.rounded-xs { @include border-radius($border-radius-xs); }
+.rounded-sm { @include border-radius($border-radius-sm); }
+.rounded { @include border-radius($border-radius-base); }
+.rounded-lg { @include border-radius($border-radius-lg); }
+.rounded-xl { @include border-radius($border-radius-xl); }
+.rounded-full { @include border-radius($border-radius-round); }
+
+// ==================== 阴影类 ====================
+.shadow-light { @include box-shadow($box-shadow-light); }
+.shadow { @include box-shadow($box-shadow-base); }
+.shadow-dark { @include box-shadow($box-shadow-dark); }
+.shadow-none { box-shadow: none; }
+
+// ==================== 显示隐藏类 ====================
+.hidden { display: none !important; }
+.visible { display: block !important; }
+.invisible { visibility: hidden !important; }
+
+// ==================== 定位类 ====================
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+// ==================== 页面容器 ====================
+.page {
+  min-height: 100vh;
+  background-color: $bg-color-light;
+}
+
+.container {
+  padding: 0 $page-padding;
+}
+
+.section {
+  margin-bottom: $spacing-lg;
+  background-color: $bg-color;
+  
+  &__header {
+    padding: $spacing-md;
+    @include flex-between();
+    @include border-side(bottom);
+    
+    &-title {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-medium;
+      color: $text-color;
+    }
+    
+    &-more {
+      font-size: $font-size-sm;
+      color: $text-color-light;
+    }
+  }
+  
+  &__content {
+    padding: $spacing-md;
+  }
+}
+
+// ==================== 电商特定样式 ====================
+// 价格样式
+.price {
+  @include price-style();
+  
+  &--small {
+    @include price-style($font-size-base);
+  }
+  
+  &--large {
+    @include price-style($font-size-xl);
+  }
+  
+  &--original {
+    color: $price-color-original;
+    text-decoration: line-through;
+    font-weight: $font-weight-normal;
+    
+    &::before {
+      content: '¥';
+    }
+  }
+}
+
+// 标签样式
+.tag {
+  @include tag-style();
+  
+  &--hot {
+    @include tag-style($tag-color-hot);
+  }
+  
+  &--new {
+    @include tag-style($tag-color-new);
+  }
+  
+  &--sale {
+    @include tag-style($tag-color-sale);
+  }
+}
+
+// 商品卡片
+.product-card {
+  @include product-card();
+}
+
+// 评分样式
+.rating {
+  @include flex(row, flex-start, center);
+  
+  &__star {
+    font-size: $font-size-sm;
+    color: $rating-color-gray;
+    margin-right: 2rpx;
+    
+    &--active {
+      color: $rating-color;
+    }
+  }
+  
+  &__text {
+    margin-left: $spacing-xs;
+    font-size: $font-size-sm;
+    color: $text-color-light;
+  }
+}
+
+// 库存状态
+.stock {
+  font-size: $font-size-sm;
+  
+  &--normal {
+    color: $stock-color-normal;
+  }
+  
+  &--low {
+    color: $stock-color-low;
+  }
+  
+  &--out {
+    color: $stock-color-out;
+  }
+}

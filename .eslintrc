@@ -1,6 +1,29 @@
 // ESLint 检查 .vue 文件需要单独配置编辑器：
 // https://eslint.vuejs.org/user-guide/#editor-integrations
 {
-  "extends": ["taro/vue3"]
+  // 指定解析器
+  "parser": "@typescript-eslint/parser",
+  "extends": ["taro/vue3"],
+  "vue/multi-word-component-names": "off",
+  // 启用 TypeScript 的 ESLint 插件
+  "plugins": ["@typescript-eslint"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "@": "/src",
+        "@components": "/src/components",
+        "@stores": "/src/stores",
+        "@utils": "/src/utils",
+        "@types": "/types"
+      }
+    }
+  },
+  "rules": {
+    // 可以在这里添加自定义的 ESLint 规则
+  }
 }
 

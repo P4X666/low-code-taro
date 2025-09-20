@@ -1,0 +1,361 @@
+/**
+ * SCSS 混入函数集合
+ * 提供常用的样式混入，提高代码复用性和开发效率
+ */
+
+// ==================== 布局混入 ====================
+/**
+ * Flex 布局混入
+ * @param {string} $direction - flex-direction 值
+ * @param {string} $justify - justify-content 值
+ * @param {string} $align - align-items 值
+ */
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+/**
+ * 水平垂直居中
+ */
+@mixin flex-center() {
+  @include flex(row, center, center);
+}
+
+/**
+ * 水平居中
+ */
+@mixin flex-center-x() {
+  @include flex(row, center, stretch);
+}
+
+/**
+ * 垂直居中
+ */
+@mixin flex-center-y() {
+  @include flex(row, flex-start, center);
+}
+
+/**
+ * 两端对齐
+ */
+@mixin flex-between() {
+  @include flex(row, space-between, center);
+}
+
+/**
+ * 环绕对齐
+ */
+@mixin flex-around() {
+  @include flex(row, space-around, center);
+}
+
+/**
+ * 绝对定位居中
+ */
+@mixin absolute-center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// ==================== 文本混入 ====================
+/**
+ * 单行文本省略
+ */
+@mixin text-ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/**
+ * 多行文本省略
+ * @param {number} $lines - 显示行数
+ */
+@mixin text-ellipsis-multi($lines: 2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/**
+ * 文本不可选择
+ */
+@mixin text-no-select() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// ==================== 尺寸混入 ====================
+/**
+ * 设置宽高
+ * @param {string} $width - 宽度
+ * @param {string} $height - 高度，默认等于宽度
+ */
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/**
+ * 最小宽高
+ * @param {string} $width - 最小宽度
+ * @param {string} $height - 最小高度，默认等于宽度
+ */
+@mixin min-size($width, $height: $width) {
+  min-width: $width;
+  min-height: $height;
+}
+
+/**
+ * 最大宽高
+ * @param {string} $width - 最大宽度
+ * @param {string} $height - 最大高度，默认等于宽度
+ */
+@mixin max-size($width, $height: $width) {
+  max-width: $width;
+  max-height: $height;
+}
+
+// ==================== 边框混入 ====================
+/**
+ * 边框样式
+ * @param {string} $width - 边框宽度
+ * @param {string} $style - 边框样式
+ * @param {string} $color - 边框颜色
+ */
+@mixin border($width: $border-width-base, $style: solid, $color: $border-color) {
+  border: $width $style $color;
+}
+
+/**
+ * 单边边框
+ * @param {string} $direction - 方向 (top, right, bottom, left)
+ * @param {string} $width - 边框宽度
+ * @param {string} $style - 边框样式
+ * @param {string} $color - 边框颜色
+ */
+@mixin border-side($direction, $width: $border-width-base, $style: solid, $color: $border-color) {
+  border-#{$direction}: $width $style $color;
+}
+
+/**
+ * 圆角边框
+ * @param {string} $radius - 圆角大小
+ */
+@mixin border-radius($radius: $border-radius-base) {
+  border-radius: $radius;
+}
+
+/**
+ * 1px 边框解决方案（解决高清屏显示问题）
+ * @param {string} $color - 边框颜色
+ * @param {string} $direction - 方向 (all, top, right, bottom, left)
+ */
+@mixin hairline($color: $border-color, $direction: all) {
+  position: relative;
+  
+  @if $direction == all {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid $color;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+  } @else if $direction == top {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $color;
+      transform: scaleY(0.5);
+      transform-origin: 0 0;
+    }
+  } @else if $direction == bottom {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $color;
+      transform: scaleY(0.5);
+      transform-origin: 0 100%;
+    }
+  }
+}
+
+// ==================== 阴影混入 ====================
+/**
+ * 盒子阴影
+ * @param {string} $shadow - 阴影值
+ */
+@mixin box-shadow($shadow: $box-shadow-base) {
+  box-shadow: $shadow;
+}
+
+/**
+ * 文字阴影
+ * @param {string} $shadow - 阴影值
+ */
+@mixin text-shadow($shadow: 0 1px 2px rgba(0, 0, 0, 0.1)) {
+  text-shadow: $shadow;
+}
+
+// ==================== 动画混入 ====================
+/**
+ * 过渡动画
+ * @param {string} $property - 过渡属性
+ * @param {string} $duration - 持续时间
+ * @param {string} $timing - 时间函数
+ */
+@mixin transition($property: all, $duration: $animation-duration-base, $timing: $ease-out) {
+  transition: $property $duration $timing;
+}
+
+/**
+ * 变换动画
+ * @param {string} $transform - 变换值
+ */
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  transform: $transform;
+}
+
+// ==================== 背景混入 ====================
+/**
+ * 背景图片
+ * @param {string} url - 图片地址
+ * @param {string} $size - 背景尺寸
+ * @param {string} $position - 背景位置
+ * @param {string} $repeat - 重复方式
+ */
+@mixin background-image($url, $size: cover, $position: center, $repeat: no-repeat) {
+  background-image: url($url);
+  background-size: $size;
+  background-position: $position;
+  background-repeat: $repeat;
+}
+
+/**
+ * 渐变背景
+ * @param {string} $direction - 渐变方向
+ * @param {string} $start-color - 起始颜色
+ * @param {string} $end-color - 结束颜色
+ */
+@mixin gradient($direction: to bottom, $start-color: #fff, $end-color: #000) {
+  background: linear-gradient($direction, $start-color, $end-color);
+}
+
+// ==================== 清除浮动 ====================
+/**
+ * 清除浮动
+ */
+@mixin clearfix() {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// ==================== 隐藏元素 ====================
+/**
+ * 视觉隐藏（保留在文档流中，但不可见）
+ */
+@mixin visually-hidden() {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// ==================== 响应式混入 ====================
+/**
+ * 媒体查询混入
+ * @param {string} $breakpoint - 断点值
+ */
+@mixin media-up($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin media-down($breakpoint) {
+  @media (max-width: ($breakpoint - 1)) {
+    @content;
+  }
+}
+
+// ==================== 电商特定混入 ====================
+/**
+ * 价格样式
+ * @param {string} $size - 字体大小
+ * @param {string} $color - 字体颜色
+ * @param {string} $weight - 字体粗细
+ */
+@mixin price-style($size: $font-size-lg, $color: $price-color, $weight: $font-weight-bold) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+  
+  &::before {
+    content: '¥';
+    font-size: ($size * 0.8);
+  }
+}
+
+/**
+ * 商品卡片样式
+ */
+@mixin product-card() {
+  background: $bg-color;
+  border-radius: $border-radius-base;
+  @include box-shadow($box-shadow-light);
+  @include transition(box-shadow);
+  
+  &:hover {
+    @include box-shadow($box-shadow-base);
+  }
+}
+
+/**
+ * 标签样式
+ * @param {string} $bg-color - 背景颜色
+ * @param {string} $text-color - 文字颜色
+ */
+@mixin tag-style($bg-color: $primary-color, $text-color: #fff) {
+  display: inline-block;
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-xs;
+  color: $text-color;
+  background-color: $bg-color;
+  border-radius: $border-radius-sm;
+  line-height: 1;
+}

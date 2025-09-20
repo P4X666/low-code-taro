@@ -5,7 +5,11 @@ module.exports = {
     ['taro', {
       framework: 'vue3',
       ts: true,
-      compiler: 'vite',
+      compiler: 'webpack5',
     }]
+  ],
+  plugins: [
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    ['@babel/plugin-proposal-class-properties', { loose: true }]
   ]
 }
