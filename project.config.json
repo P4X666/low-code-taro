@@ -15,7 +15,8 @@
     "newFeature": true,
     "coverView": true,
     "useCompilerPlugins": [
-      "typescript"
+      "typescript",
+      "sass"
     ]
   },
   "compileType": "miniprogram"

@@ -114,8 +114,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted, watch } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import Taro from '@tarojs/taro'
+import './index.scss'
 
 /**
  * 分类数据类型定义
@@ -417,7 +418,3 @@ onMounted(() => {
   initCategoryData()
 })
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

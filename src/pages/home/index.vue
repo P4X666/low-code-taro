@@ -1,5 +1,5 @@
 <template>
-  <view class="home">
+  <view class="home safe-area-bottom" :style="{'padding-top': statusBarHeight + 'px'}">
     <!-- 搜索栏 -->
     <view class="home__search">
       <nut-searchbar
@@ -60,12 +60,15 @@
         </view>
       </view>
     </view>
+    <view :style="{'padding-bottom': tabbarHeight, height: '20rpx'}"></view>
   </view>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import Taro from '@tarojs/taro'
+import { tabbarHeight } from '@/stores/tabbar-selected'
+import './index.scss'
 
 /**
  * 轮播图数据类型定义
@@ -184,12 +187,17 @@ const loadHomeData = async () => {
   }
 }
 
+const windowInfo = Taro.getWindowInfo()
+const { statusBarHeight } = windowInfo
+console.log(windowInfo.statusBarHeight);
+
+
+const menuButtonStyle = Taro.getMenuButtonBoundingClientRect()
+console.log(menuButtonStyle);
+
+
 // 页面加载时获取数据
 onMounted(() => {
   loadHomeData()
 })
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

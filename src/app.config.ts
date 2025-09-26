@@ -3,7 +3,8 @@ export default {
     'pages/home/index',
     'pages/category/index',
     'pages/cart/index',
-    'pages/profile/index'
+    'pages/profile/index',
+    'pages/search/index',
   ],
   "resolveAlias": {
     "@/*": "/*"
@@ -37,7 +38,11 @@ export default {
       {
         pagePath: 'pages/profile/index',
         text: '我的',
-      }
+      },
+      {
+        pagePath: 'pages/search/index',
+        text: '搜索',
+      },
     ]
   },
   sitemapLocation: "sitemap.json",

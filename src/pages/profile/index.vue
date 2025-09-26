@@ -122,6 +122,7 @@
 import { ref, computed, onMounted } from 'vue'
 import Taro from '@tarojs/taro'
 import { useUserStore } from '@/stores'
+import './index.scss'
 
 // 用户状态管理
 const userStore = useUserStore()
@@ -317,6 +318,6 @@ const onShow = () => {
 Taro.useDidShow(onShow)
 </script>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @import './index.scss';
-</style>
+</style> -->

@@ -190,6 +190,7 @@ import Taro from '@tarojs/taro'
 import { useCartStore } from '@/stores'
 import { formatPrice } from '@/utils'
 import type { CartItem } from '@/stores'
+import './index.scss'
 
 // 购物车状态管理
 const cartStore = useCartStore()
@@ -331,7 +332,3 @@ onMounted(() => {
   cartStore.loadCartItems()
 })
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

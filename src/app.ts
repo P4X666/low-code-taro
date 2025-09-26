@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import '@nutui/touch-emulator'
-
 import './app.scss'
 
 const App = createApp({
