@@ -45,10 +45,17 @@ export default {
       },
     ]
   },
+  lazyCodeLoading: "requiredComponents",
   sitemapLocation: "sitemap.json",
   "__usePrivacyCheck__": true,
   networkTimeout: {
     "request": 3000,
     "downloadFile": 30000
   },
+  permission: {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于查找附近门店"
+    }
+  },
+  requiredPrivateInfos: ["getLocation", "chooseAddress"]
 }
