@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "low-code-taro",
   "description": "基础电商商城模板",
-  "appid": "wxd95a72c5f595b6a3",
+  "appid": "testappid",
   "setting": {
     "urlCheck": true,
     "es6": true,
