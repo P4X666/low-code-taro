@@ -49,7 +49,7 @@ export interface OrderStats {
 
 export const useUserStore = defineStore('user', () => {
   // 用户信息
-  const userInfo = ref<UserInfo | null>(null)
+  const userInfo = ref<UserInfo>({} as UserInfo)
   
   // 登录状态
   const isLoggedIn = ref<boolean>(false)

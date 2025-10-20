@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, h } from 'vue'
-// import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro'
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro'
 
 // 你可以任意命名 `defineStore()` 的返回值，但最好使用 store 的名字，同时以 `use` 开头且以 `Store` 结尾。
 // (比如 `useUserStore`，`useCartStore`，`useProductStore`)
@@ -30,33 +30,33 @@ export const useSelectedStore = defineStore('tabbarSelected', () => {
   return { selected, setSelected }
 })
 
-// export const TabbarList = [
-//   {
-//     title: 'Home',
-//     icon: h(Home),
-//     url: '/pages/home/index'
-//   },
-//   {
-//     title: 'Category',
-//     icon: h(Category),
-//     url: '/pages/category/index'
-//   },
-//   {
-//     title: 'Find',
-//     icon: h(Find),
-//     url: '/pages/search/index'
-//   },
-//   {
-//     title: 'Cart',
-//     icon: h(Cart),
-//     url: '/pages/cart/index'
-//   },
-//   {
-//     title: 'My',
-//     icon: h(My),
-//     url: '/pages/profile/index'
-//   }
-// ]
+export const TabbarList = [
+  {
+    title: 'Home',
+    icon: h(Home),
+    name: 'HOME',
+  },
+  {
+    title: 'Category',
+    icon: h(Category),
+    name: 'MENU',
+  },
+  {
+    title: 'Search',
+    icon: h(Find),
+    name: 'SEARCH',
+  },
+  {
+    title: 'Cart',
+    icon: h(Cart),
+    name: 'CART',
+  },
+  {
+    title: 'My',
+    icon: h(My),
+    name: 'PROFILE',
+  }
+]
 
 // –nut-tabbar-height 默认值是50px
 export const tabbarHeight = '100rpx'

@@ -1,11 +1,11 @@
 <template>
-  <view class="profile-page">
+  <view class="profile-page safe-area-bottom">
     <!-- 用户信息区域 -->
     <view class="profile-header">
       <view class="profile-header__bg"></view>
       <view class="profile-header__content">
         <!-- 未登录状态 -->
-        <view v-if="!userInfo.isLogin" class="profile-header__login" @click="handleLogin">
+        <view v-if="!isLoggedIn" class="profile-header__login" @click="handleLogin">
           <image 
             class="profile-header__avatar" 
             src="/static/images/default-avatar.png" 
@@ -106,7 +106,7 @@
     </view>
 
     <!-- 退出登录按钮 -->
-    <view v-if="userInfo.isLogin" class="logout-section">
+    <view v-if="isLoggedIn" class="logout-section">
       <nut-button 
         type="default" 
         class="logout-button"
@@ -115,6 +115,7 @@
         退出登录
       </nut-button>
     </view>
+    <view :style="{'padding-bottom': tabbarHeight}"></view>
   </view>
 </template>
 
@@ -122,6 +123,7 @@
 import { ref, computed, onMounted } from 'vue'
 import Taro from '@tarojs/taro'
 import { useUserStore } from '@/stores'
+import { tabbarHeight } from '@/stores/tabbar-selected';
 import './index.scss'
 
 // 用户状态管理
@@ -129,6 +131,7 @@ const userStore = useUserStore()
 
 // 计算属性
 const userInfo = computed(() => userStore.userInfo)
+const isLoggedIn = userStore.isLoggedIn
 const orderStats = computed(() => [
   {
     type: 'pending',
@@ -251,7 +254,7 @@ const handleLogout = () => {
  * 跳转到订单页面
  */
 const goToOrders = (type: string) => {
-  if (!userInfo.value.isLogin) {
+  if (!isLoggedIn) {
     handleLogin()
     return
   }
@@ -299,8 +302,7 @@ const handleMenuClick = (menu: any) => {
  * 页面加载时获取用户信息
  */
 onMounted(() => {
-  userStore.loadUserInfo()
-  if (userInfo.value.isLogin) {
+  if (isLoggedIn) {
     userStore.loadOrderStats()
   }
 })

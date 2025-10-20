@@ -6,43 +6,13 @@
   }
 </script>
 <script setup lang="ts">
-import { h } from 'vue'
 import Taro from '@tarojs/taro'
 import { storeToRefs } from 'pinia'
-import { useSelectedStore } from '@/stores/tabbar-selected'
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro'
+import { TabbarList, useSelectedStore } from '@/stores/tabbar-selected'
 import { TABBARPATH } from '@/constants/common';
 
 const store = useSelectedStore()
 const { selected } = storeToRefs(store)
-
-const TabbarList = [
-  {
-    title: 'Home',
-    icon: h(Home),
-    name: 'HOME',
-  },
-  {
-    title: 'Category',
-    icon: h(Category),
-    name: 'MENU',
-  },
-  {
-    title: 'Search',
-    icon: h(Find),
-    name: 'SEARCH',
-  },
-  {
-    title: 'Cart',
-    icon: h(Cart),
-    name: 'CART',
-  },
-  {
-    title: 'My',
-    icon: h(My),
-    name: 'PROFILE',
-  }
-]
 
 function switchTab (_item: Record<string, any>, index: number) {
   store.setSelected(index);
