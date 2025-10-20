@@ -11,21 +11,40 @@ import Taro from '@tarojs/taro'
 import { storeToRefs } from 'pinia'
 import { useSelectedStore } from '@/stores/tabbar-selected'
 import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro'
+import { TABBARPATH } from '@/constants/common';
 
 const store = useSelectedStore()
 const { selected } = storeToRefs(store)
 
-const deviceInfo = Taro.getDeviceInfo() // 获取设备基础信息
-const windowInfo = Taro.getWindowInfo() // 获取窗口信息
-const appBaseInfo = Taro.getAppBaseInfo() // 获取微信APP基础信息
-// const theme:'light'|'dark' = appBaseInfo.theme || 'light'
-console.log('deviceInfo', deviceInfo)
-console.log('windowInfo', windowInfo)
-console.log('appBaseInfo', appBaseInfo)
-// console.log('theme', theme)
+const TabbarList = [
+  {
+    title: 'Home',
+    icon: h(Home),
+    name: 'HOME',
+  },
+  {
+    title: 'Category',
+    icon: h(Category),
+    name: 'MENU',
+  },
+  {
+    title: 'Search',
+    icon: h(Find),
+    name: 'SEARCH',
+  },
+  {
+    title: 'Cart',
+    icon: h(Cart),
+    name: 'CART',
+  },
+  {
+    title: 'My',
+    icon: h(My),
+    name: 'PROFILE',
+  }
+]
 
-function switchTab (item: Record<string, unknown>, index: number) {
-  console.log(item, index)
+function switchTab (_item: Record<string, any>, index: number) {
   store.setSelected(index);
   // const isAuthorized = Taro.getStorageSync('isAuthorized') || false
   // const authorizeInterception = ['/pages/profile/index']
@@ -37,36 +56,9 @@ function switchTab (item: Record<string, unknown>, index: number) {
   //   store.setSelected(index)
   //   Taro.switchTab({ url })
   // }
+  const url = TABBARPATH[TabbarList[index].name]
+  Taro.switchTab({ url })
 }
-
-
-const TabbarList = [
-  {
-    title: 'Home',
-    icon: h(Home),
-    // url: '/pages/home/index'
-  },
-  {
-    title: 'Category',
-    icon: h(Category),
-    // url: '/pages/category/index'
-  },
-  {
-    title: 'Find',
-    icon: h(Find),
-    // url: '/pages/search/index'
-  },
-  {
-    title: 'Cart',
-    icon: h(Cart),
-    // url: '/pages/cart/index'
-  },
-  {
-    title: 'My',
-    icon: h(My),
-    // url: '/pages/profile/index'
-  }
-]
 
 </script>
 <template>
